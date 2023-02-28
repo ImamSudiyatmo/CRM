@@ -7,9 +7,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
-        "codeigniter4/translations": "^4.3",
-        "twbs/bootstrap": "^5.2",
-        "twbs/bootstrap-icons": "^1.10"
+        "codeigniter4/translations": "^4.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
