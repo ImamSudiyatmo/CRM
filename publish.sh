@@ -6,6 +6,7 @@ cd bootstrap-icons
 mkdir dist
 cd ..
 mkdir bootstrap
+mkdir sweetalert2
 cd ..
 cd ..
 php spark publish
