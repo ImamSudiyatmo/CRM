@@ -7,6 +7,7 @@ mkdir dist
 cd ..
 mkdir bootstrap
 mkdir sweetalert2
+mkdir select2
 cd ..
 cd ..
 php spark publish
