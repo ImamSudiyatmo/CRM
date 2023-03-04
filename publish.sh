@@ -5,6 +5,10 @@ mkdir bootstrap-icons
 cd bootstrap-icons
 mkdir dist
 cd ..
+mkdir daterangepicker
+cd daterangepicker
+mkdir dist
+cd ..
 mkdir bootstrap
 mkdir sweetalert2
 mkdir select2
