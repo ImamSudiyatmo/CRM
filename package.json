@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@eonasdan/tempus-dominus": "^6.2.10",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "datatables.net-bs5": "^1.13.3",
