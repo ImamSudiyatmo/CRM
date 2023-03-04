@@ -36,7 +36,7 @@ class Popper extends Publisher
 
       // Indicate we only want the minimized versions
       ->retainPattern('*.min.*')
-      ->removePattern('*.map')
+      // ->removePattern('*.map')
       ->removePattern('*.flow')
 
       // Merge-and-replace to retain the original directory structure

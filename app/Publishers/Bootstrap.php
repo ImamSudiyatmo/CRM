@@ -36,7 +36,7 @@ class Bootstrap extends Publisher
 
       // Indicate we only want the minimized versions
       ->retainPattern('*.min.*')
-      ->removePattern('*.map')
+      // ->removePattern('*.map')
 
       // Merge-and-replace to retain the original directory structure
       ->merge(true);
