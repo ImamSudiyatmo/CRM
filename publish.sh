@@ -9,6 +9,10 @@ mkdir daterangepicker
 cd daterangepicker
 mkdir dist
 cd ..
+mkdir moment
+cd moment
+mkdir dist
+cd ..
 mkdir bootstrap
 mkdir sweetalert2
 mkdir select2
