@@ -5,10 +5,6 @@ mkdir bootstrap-icons
 cd bootstrap-icons
 mkdir dist
 cd ..
-mkdir daterangepicker
-cd daterangepicker
-mkdir dist
-cd ..
 mkdir moment
 cd moment
 mkdir dist
