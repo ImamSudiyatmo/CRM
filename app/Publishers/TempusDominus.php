@@ -13,7 +13,7 @@ class TempusDominus extends Publisher
    *
    * @var string
    */
-  protected $source = ROOTPATH . 'node_modules/@eonasdan/tempus-dominus/';
+  protected $source = ROOTPATH . 'node_modules/tempusdominus-bootstrap-4/';
 
   /**
    * FCPATH is always the default destination,
@@ -32,10 +32,10 @@ class TempusDominus extends Publisher
   {
     return $this
       // Add all the files relative to $source
-      ->addPath('dist')
+      ->addPath('build')
 
       // Indicate we only want the minimized versions
-      ->removePattern('*.map')
+      ->retainPattern('*.min.*')
 
       // Merge-and-replace to retain the original directory structure
       ->merge(true);
