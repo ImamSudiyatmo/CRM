@@ -11,6 +11,6 @@ class CustomerSeeder extends Seeder
     public function run()
     {
         $generator = new Fabricator(CustomerModel::class, null, 'id_ID');
-        $generator->create(50);
+        $generator->setOverrides(['deleted_at' => null])->create(50);
     }
 }
