@@ -2,7 +2,7 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
-    "datatables.net-bs5": "^1.13.3",
+    "datatables.net-bs5": "^1.13.4",
     "jquery": "^3.6.4",
     "select2": "^4.1.0-rc.0",
     "sweetalert2": "11.4.8",
