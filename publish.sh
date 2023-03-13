@@ -5,6 +5,14 @@ mkdir bootstrap-icons
 cd bootstrap-icons
 mkdir dist
 cd ..
+mkdir datatables
+cd datatables
+mkdir dist
+cd ..
+mkdir datatables-bs5
+cd datatables-bs5
+mkdir dist
+cd ..
 mkdir moment
 cd moment
 mkdir dist
