@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\CustomerModel;
+use App\Entities\CustomerEntity;
 
 class CustomerController extends ResourceController
 {
@@ -86,6 +87,12 @@ class CustomerController extends ResourceController
     public function create()
     {
         $cust_mod = new CustomerModel();
+        $name = $this->request->getPost("name");
+
+        $cust_id = $cust_mod->insert(new CustomerEntity([
+            "name" => $name,
+        ]));
+        return $this->respondCreated($cust_id, "Customer " . $name . " Berhasil ditambah");
     }
 
     /**
@@ -108,7 +115,9 @@ class CustomerController extends ResourceController
             }
         } else {
             // lakukan edit user seperti biasa
-            return $this->respondUpdated([]);
+            $customer =  new CustomerEntity();
+            $customer->name = $this->request->getPost('name');
+            return $this->respondUpdated($cust_mod->update($id, $customer));
         }
     }
 
