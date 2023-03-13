@@ -120,5 +120,17 @@ class CustomerController extends ResourceController
     public function delete($id = null)
     {
         $cust_mod = new CustomerModel();
+        // get deleted_at field
+        $delKey = $cust_mod->deletedField;
+        // get customer data
+        $custData = $this->_getCustomer($id, 'with');
+        // check customer deleted field
+        if (is_null($custData->$delKey)) {
+            // delete soft
+            return $this->respondDeleted($cust_mod->delete($id));
+        } else {
+            // delete hard
+            return $this->respondDeleted($cust_mod->delete($id, true));
+        }
     }
 }
