@@ -47,23 +47,34 @@ class CustomerController extends ResourceController
             }
         } else {
             // jika ada parameter id
-            // filter customer with deleted
-            $allCustomers = $cust_mod->withDeleted()->find($id);
-            if (is_null($allCustomers)) {
-                // jika tidak ada
-                return $this->failNotFound();
-            } else {
+            if ($this->_getCustomer($id, true)) {
                 // jika ada nilainya
-                $activeCust = $cust_mod->find($id);
-                if (is_null($activeCust)) {
+                if ($this->_getCustomer($id)) {
+                    // customer masih aktif
+                    return $this->respond($this->_getCustomer($id));
+                } else {
                     // customer sudah di delete
                     return $this->respondNoContent();
-                } else {
-                    // customer masih aktif
-                    return $this->respond($activeCust);
                 }
+            } else {
+                // jika tidak ada
+                return $this->failNotFound();
             }
         }
+    }
+
+    private function _getCustomer($id, $withDeleted = false)
+    {
+        $cust_mod = new CustomerModel();
+        if ($withDeleted) {
+            $custData = $cust_mod->withDeleted()->find($id);
+        } else {
+            $custData = $cust_mod->find($id);
+        }
+        if (is_null($custData)) {
+            return false;
+        }
+        return $custData;
     }
 
     /**
