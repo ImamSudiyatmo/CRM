@@ -33,6 +33,11 @@ $routes->setPrioritize();
 $routes->get('/', 'Home::index');
 $routes->group('admin', function ($routes) {
     $routes->get('', 'Home::admin');
+    /**
+     * 
+     * Customer Routes
+     * 
+     */
     $routes->group('customer', function ($routes) {
         $routes->post('list', 'CustomerController::show');
         $routes->post('activation/(:num)', 'CustomerController::update/$1/true');
