@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\CustomerModel;
-use App\Entities\CustomerEntity;
 
 class CustomerController extends ResourceController
 {
