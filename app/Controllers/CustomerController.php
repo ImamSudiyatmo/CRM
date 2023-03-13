@@ -47,7 +47,7 @@ class CustomerController extends ResourceController
             }
         } else {
             // jika ada parameter id
-            if ($this->_getCustomer($id, true)) {
+            if ($this->_getCustomer($id, 'with')) {
                 // jika ada nilainya
                 if ($this->_getCustomer($id)) {
                     // customer masih aktif
@@ -63,11 +63,13 @@ class CustomerController extends ResourceController
         }
     }
 
-    private function _getCustomer($id, $withDeleted = false)
+    private function _getCustomer($id, $WithOnlyDeleted = false)
     {
         $cust_mod = new CustomerModel();
-        if ($withDeleted) {
+        if ($WithOnlyDeleted == 'with') {
             $custData = $cust_mod->withDeleted()->find($id);
+        } else if ($WithOnlyDeleted == 'only') {
+            $custData = $cust_mod->onlyDeleted()->find($id);
         } else {
             $custData = $cust_mod->find($id);
         }
@@ -92,9 +94,23 @@ class CustomerController extends ResourceController
      *
      * @return mixed
      */
-    public function update($id = null)
+    public function update($id = null, $activation = false)
     {
         $cust_mod = new CustomerModel();
+        if ($activation) {
+            // lakukan aktivasi user
+            if ($this->_getCustomer($id, 'only')) {
+                // customer tidak aktif
+                // update deleted_at
+                return $this->respondUpdated($cust_mod->update($id, [$cust_mod->deletedField => null]));
+            } else {
+                // customer masih aktif
+                return $this->respondNoContent();
+            }
+        } else {
+            // lakukan edit user seperti biasa
+            return $this->respondUpdated([]);
+        }
     }
 
     /**

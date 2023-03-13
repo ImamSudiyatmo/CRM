@@ -35,6 +35,9 @@ $routes->group('admin', function ($routes) {
     $routes->get('', 'Home::admin');
     $routes->group('customer', function ($routes) {
         $routes->post('list', 'CustomerController::show');
+        $routes->post('activation/(:num)', 'CustomerController::update/$1/true');
+        $routes->put('activation/(:num)', 'CustomerController::update/$1/true');
+        $routes->patch('activation/(:num)', 'CustomerController::update/$1/true');
     });
     $routes->resource('customer', [
         'controller' => 'CustomerController',
